@@ -80,7 +80,23 @@ function takeCommand(message){
         window.open("https://facebook.com", "_blank");
         speak("Opening Facebook...")
     }
+		
+	else if(message.includes('how are you') || message.includes('how are you today')){
+        speak("I am doing well sir, thank you for asking")
+    }
 
+	else if(message.includes('what is your name') || message.includes('who are you')){
+        speak("My full name is K.E.V.I.N. which stands for Knowledgeable Electronic Virtual Intelligent Navigator. How can I assist you today?")
+    }
+
+	else if(message.includes('i feel sleepy') || message.includes('i feel lazy')){
+        speak("i know the feeling sir you left the system on for many hours")
+    }
+
+	else if(message.includes('kevin you up')){
+        speak("for you sir, always")
+    }
+	
     else if(message.includes('what is') || message.includes('who is') || message.includes('what are')) {
         window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
         const finalText = "This is what i found on internet regarding " + message;
