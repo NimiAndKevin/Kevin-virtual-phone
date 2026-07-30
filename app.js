@@ -42,7 +42,7 @@ function wishMe(){
 }
 
 window.addEventListener('load', ()=>{
-    speak("Initializing JARVIS..");
+    speak("Initializing KEVIN..");
     wishMe();
 });
 
