@@ -42,7 +42,7 @@ function wishMe(){
 }
 
 window.addEventListener('load', ()=>{
-    speak("Initializing KEVIN..");
+    speak("Initializing KEVIN.. Hello, I am KEVIN, your personal voice assistant. I am ready to help you optimize your tasks.");
     wishMe();
 });
 
