@@ -5,9 +5,20 @@ const content = document.querySelector('.content')
 function speak(text){
     const text_speak = new SpeechSynthesisUtterance(text);
 
-    text_speak.rate = 1;
+    // Get available system voices
+    const voices = window.speechSynthesis.getVoices();
+    
+    // Explicitly target the Microsoft David voice
+    const davidVoice = voices.find(voice => voice.name.includes('Microsoft David'));
+    
+    if (davidVoice) {
+        text_speak.voice = davidVoice;
+    }
+
+    // Settings optimized for David's voice profile
+    text_speak.rate = 1.0;  
     text_speak.volume = 1;
-    text_speak.pitch = 1;
+    text_speak.pitch = 1.0; 
 
     window.speechSynthesis.speak(text_speak);
 }
