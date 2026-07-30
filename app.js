@@ -8,17 +8,17 @@ function speak(text){
     // Get available system voices
     const voices = window.speechSynthesis.getVoices();
     
-    // Explicitly target the Microsoft David voice
-    const davidVoice = voices.find(voice => voice.name.includes('Microsoft David'));
+    // Target the premium Mac voice "Alex"
+    const alexVoice = voices.find(voice => voice.name === 'Alex');
     
-    if (davidVoice) {
-        text_speak.voice = davidVoice;
+    if (alexVoice) {
+        text_speak.voice = alexVoice;
     }
 
-    // Settings optimized for David's voice profile
-    text_speak.rate = 1.0;  
-    text_speak.volume = 1;
-    text_speak.pitch = 1.0; 
+    // Settings carefully adjusted for a sweet, friendly, and soft tone
+    text_speak.rate = 0.95;   // Gentle, relaxed speed that sounds caring
+    text_speak.volume = 1.0;  // Full, clear volume
+    text_speak.pitch = 1.15;  // Raised pitch to make the voice lighter, brighter, and warmer
 
     window.speechSynthesis.speak(text_speak);
 }
