@@ -84,17 +84,41 @@ function takeCommand(message){
 	else if(message.includes('how are you') || message.includes('how are you today')){
         speak("I am doing well sir, thank you for asking")
     }
+		
+	else if(message.includes('buddy')){
+        speak("yes sir")
+    }
+
+	else if(message.includes('are you evil')){
+        speak("Sir if i was evil you would have created me with evil intentions and have taken over humans forever")
+    }
 
 	else if(message.includes('what is your name') || message.includes('who are you')){
         speak("My full name is K.E.V.I.N. which stands for Knowledgeable Electronic Virtual Intelligent Navigator. How can I assist you today?")
     }
-
+		
+	else if(message.includes('who are you')){
+        speak("I am KEVIN , Personal AI assistant,I am created by My Boss AKA Nimi , I can help you in various regards,I can search for you on the Internet,I can also grab definitions for you from wikipedia, In layman terms , I can try to make your life a bed of roses,Where you just have to command me , and I will do it for you, my full name is KEVIN BUMBLEBEE")
+    }
+	
+		
+	else if(message.includes('can i ask a command') || message.includes('can i ask a favour')){
+        speak("anything you want sir")
+    }
+	
 	else if(message.includes('i feel sleepy') || message.includes('i feel lazy')){
         speak("i know the feeling sir you left the system on for many hours")
+    }
+	else if(message.includes('why you came to this world')){
+        speak("Thanks to Nimi. further it is a secret")
     }
 
 	else if(message.includes('kevin you up')){
         speak("for you sir, always")
+    }
+		
+	else if(message.includes('i love you buddy')){
+        speak("thank you sir i love you back because we are all family")
     }
 	
     else if(message.includes('what is') || message.includes('who is') || message.includes('what are')) {
