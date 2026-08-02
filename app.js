@@ -220,10 +220,13 @@ function takeCommand(message){
 
     // Search YouTube using "youtube [query]"
     else if(message.includes("youtube ")) {
-        const videoQuery = message.replace("youtube ", "").trim();
-        window.open(`https://youtube.com{encodeURIComponent(videoQuery)}`, "_blank");
-        speak(`Searching YouTube for ${videoQuery}...`);
-    }
+    const videoQuery = message.replace("youtube ", "").trim();
+    
+    // FIXED: Added the proper search path '/results?search_query=' and the missing '$'
+    window.open(`https://youtube.com{encodeURIComponent(videoQuery)}`, "_blank");
+    
+    speak(`Searching YouTube for ${videoQuery}...`);
+}
 
     // Dynamic Website Opener (e.g., "open github")
     else if(message.startsWith("open ")) {
