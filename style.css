@@ -96,27 +96,45 @@
     gap: 10px;
 }
 
-/* Base message style */
+/* Base message structural style with a fluid font and white text */
 .message {
-    padding: 10px 15px;
-    border-radius: 15px;
-    max-width: 75%;
-    font-size: 0.95rem;
+    padding: 12px 18px;
+    font-size: 1rem;
     line-height: 1.4;
+    max-width: 80%;
+    word-wrap: break-word;
+    font-family: 'Comfortaa', cursive, sans-serif; /* Soft, rounded edges */
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: #ffffff; /* FORCE TEXT TO BE WHITE */
 }
 
-/* User message aligned to the right */
+/* User Bubble & Drippy Text Style (Fluid Metallic Blue Base) */
 .user-message {
-    background-color: #007bff;
-    color: white;
+    background: linear-gradient(135deg, #001f4d, #0044cc); /* Darker fluid base */
     align-self: flex-end;
-    border-bottom-right-radius: 2px;
+    border-radius: 20px 20px 4px 20px; 
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.2);
+    
+    /* The Text Drip: Spreads blue color downward below the white text */
+    text-shadow: 
+        0 2px 4px rgba(0, 210, 255, 0.6), 
+        0 5px 8px rgba(0, 210, 255, 0.4), 
+        0 9px 15px rgba(0, 82, 212, 0.3);
 }
 
-/* Kevin's message aligned to the left */
+/* Kevin's Bubble & Drippy Text Style (Neon Melting Core Base) */
 .kevin-message {
-    background-color: #e9ecef;
-    color: #333;
+    background: #050508; /* Ultra matte void black */
+    border: 1px solid rgba(0, 240, 255, 0.3);
     align-self: flex-start;
-    border-bottom-left-radius: 2px;
+    border-radius: 20px 20px 20px 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    
+    /* The Text Drip: Deep multi-stage neon cyan shadow running down below the white text */
+    text-shadow: 
+        0 1px 2px rgba(0, 240, 255, 0.8),
+        0 4px 6px rgba(0, 240, 255, 0.7), 
+        0 8px 12px rgba(0, 210, 255, 0.5), 
+        0 14px 20px rgba(0, 130, 255, 0.3);
 }
