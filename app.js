@@ -1,26 +1,62 @@
 const btn = document.querySelector('.talk')
 const content = document.querySelector('.content')
+const chatContainer = document.getElementById('chatContainer');
 
+let chatHistory = [];
+let availableVoices = [];
 
-function speak(text){
+function loadVoices() {
+    availableVoices = window.speechSynthesis.getVoices();
+}
+if (window.speechSynthesis.onvoiceschanged !== undefined) {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+loadVoices();
+
+function addMessageToChat(sender, text) {
+    chatHistory.push({ sender: sender, text: text });
+
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+    
+    if (sender === 'user') {
+        messageElement.classList.add('user-message');
+    } else {
+        messageElement.classList.add('kevin-message');
+    }
+    
+    messageElement.innerText = text;
+    chatContainer.appendChild(messageElement);
+
+    // Dynamic fluid scroll straight to the bottom
+    chatContainer.scrollTo({
+        top: chatContainer.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
+function speak(text) {
+    window.speechSynthesis.cancel();
     const text_speak = new SpeechSynthesisUtterance(text);
 
-    // Get available system voices
-    const voices = window.speechSynthesis.getVoices();
+    const targetVoice = availableVoices.find(voice => 
+        voice.name.includes('Alex') || 
+        voice.name.includes('Samantha') || 
+        voice.name.includes('Google US English')
+    );
     
-    // Target the premium Mac voice "Alex"
-    const alexVoice = voices.find(voice => voice.name === 'Alex');
-    
-    if (alexVoice) {
-        text_speak.voice = alexVoice;
+    if (targetVoice) {
+        text_speak.voice = targetVoice;
     }
 
-    // Settings carefully adjusted for a sweet, friendly, and soft tone
-    text_speak.rate = 0.95;   // Gentle, relaxed speed that sounds caring
-    text_speak.volume = 1.0;  // Full, clear volume
-    text_speak.pitch = 1.15;  // Raised pitch to make the voice lighter, brighter, and warmer
+    text_speak.rate = 0.95;   
+    text_speak.volume = 1.0;  
+    text_speak.pitch = 1.15;  
 
     window.speechSynthesis.speak(text_speak);
+
+    // Prints the response text inside the glowing black/blue container
+    addMessageToChat('kevin', text);
 }
 
 function wishMe(){
