@@ -80,3 +80,43 @@
   font-size: 15px;
   margin-right: 20px;
 }
+
+.chat-container {
+    width: 90%;
+    max-width: 500px;
+    height: 200px;
+    overflow-y: auto;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Base message style */
+.message {
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 75%;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* User message aligned to the right */
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+/* Kevin's message aligned to the left */
+.kevin-message {
+    background-color: #e9ecef;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
