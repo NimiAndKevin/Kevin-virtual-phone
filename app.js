@@ -207,9 +207,18 @@ function takeCommand(message){
 		
     // Latest News Updates (e.g., "latest news")
     else if(message.includes("news")) {
-        window.open("https://google.com", "_blank");
-        speak("Opening Google News to fetch the latest global headlines for you, sir.");
+
+    let topic = message.replace("news", "").trim();
+
+    if(topic === "") {
+        topic = "latest";
     }
+
+    window.open(
+        `https://news.google.com/search?q=${encodeURIComponent(topic)}`, "_blank");
+
+    speak(`Searching the latest ${topic} news, sir.`);
+}
 
     // Search 3D items on Sketchfab using "3d search" or "image search"
     else if(message.includes("3d search") || message.includes("image search")) {
