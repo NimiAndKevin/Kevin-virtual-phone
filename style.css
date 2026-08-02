@@ -113,27 +113,31 @@
 
 /* User Bubble & Drippy Text Style (Fluid Metallic Blue Base) */
 .user-message {
-    background: linear-gradient(135deg, #001f4d, #0044cc); /* Darker fluid base */
-    align-self: flex-end;
+    background: linear-gradient(135deg, #001f4d, #0044cc); 
+    
+    /* Forces alignment to the far right */
+    align-self: flex-end !important; 
+    
     border-radius: 20px 20px 4px 20px; 
     box-shadow: 0 4px 15px rgba(0, 210, 255, 0.2);
     
-    /* The Text Drip: Spreads blue color downward below the white text */
     text-shadow: 
         0 2px 4px rgba(0, 210, 255, 0.6), 
         0 5px 8px rgba(0, 210, 255, 0.4), 
         0 9px 15px rgba(0, 82, 212, 0.3);
 }
 
-/* Kevin's Bubble & Drippy Text Style (Neon Melting Core Base) */
+/* 5. Kevin's Bubble (Pushed to the LEFT) */
 .kevin-message {
-    background: #050508; /* Ultra matte void black */
+    background: #050508; 
     border: 1px solid rgba(0, 240, 255, 0.3);
-    align-self: flex-start;
+    
+    /* Forces alignment to the far left */
+    align-self: flex-start !important; 
+    
     border-radius: 20px 20px 20px 4px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
     
-    /* The Text Drip: Deep multi-stage neon cyan shadow running down below the white text */
     text-shadow: 
         0 1px 2px rgba(0, 240, 255, 0.8),
         0 4px 6px rgba(0, 240, 255, 0.7), 
