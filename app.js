@@ -185,7 +185,7 @@ function takeCommand(message){
         if(city === "") {
             speak("Which city's weather would you like me to check, sir?");
         } else {
-            window.open(`https://google.com{encodeURIComponent(city)}`, "_blank");
+            window.open(`https://www.google.com/search?q=weather+${encodeURIComponent(city)}`, "_blank");
             speak(`Checking the current weather forecast for ${city}...`);
         }
     }
@@ -193,7 +193,7 @@ function takeCommand(message){
 	else if (message.includes("ip address") || message.includes("my ip")) {
         speak("Fetching your network protocol details now, sir.");
         
-        fetch('https://ipify.org')
+        fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
                 // Splits the IP so Kevin reads the numbers clearly instead of as one big number
@@ -214,7 +214,7 @@ function takeCommand(message){
     // Search 3D items on Sketchfab using "3d search" or "image search"
     else if(message.includes("3d search") || message.includes("image search")) {
         const search3d = message.replace("3d search", "").replace("image search", "").trim();
-        window.open(`https://sketchfab.com{encodeURIComponent(search3d)}`, "_blank");
+        window.open(`https://sketchfab.com/search?q=${encodeURIComponent(search3d)}`, "_blank");
         speak(`Searching Sketchfab for ${search3d}...`);
     }
 
@@ -223,7 +223,7 @@ function takeCommand(message){
     const videoQuery = message.replace("youtube ", "").trim();
     
     // FIXED: Added the proper search path '/results?search_query=' and the missing '$'
-    window.open(`https://youtube.com{encodeURIComponent(videoQuery)}`, "_blank");
+    window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(videoQuery)}`, "_blank");
     
     speak(`Searching YouTube for ${videoQuery}...`);
 }
@@ -260,7 +260,7 @@ function takeCommand(message){
             questions.forEach((q) => {
                 let cleanQ = q.trim();
                 if(cleanQ.length > 3) {
-                    window.open(`https://google.com{encodeURIComponent(cleanQ)}&as_qdr=all`, "_blank");
+                    window.open(`https://www.google.com/search?q=${encodeURIComponent(cleanQ)}`, "_blank");
                 }
             });
         } else {
@@ -270,7 +270,9 @@ function takeCommand(message){
     }
 
     else if(message.includes('wikipedia')) {
-        window.open(`https://wikipedia.org{encodeURIComponent(message.replace("wikipedia", "").trim())}`, "_blank");
+        const topic = message.replace("wikipedia", "").trim();
+		window.open(
+    `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(topic)}`, "_blank");
         const finalText = "This is what i found on wikipedia regarding " + message;
         speak(finalText);
     }
@@ -294,7 +296,8 @@ function takeCommand(message){
     }
 
     else {
-        window.open(`https://google.com{encodeURIComponent(message)}`, "_blank");
+        window.open(
+    `https://www.google.com/search?q=${encodeURIComponent(message)}`, "_blank");
         const finalText = "I found some information for " + message + " on google";
         speak(finalText);
     }
