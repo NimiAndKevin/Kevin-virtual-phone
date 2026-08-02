@@ -35,6 +35,24 @@ function addMessageToChat(sender, text) {
     });
 }
 
+// 2. The Speech Recognition event that FEEDS text into your function above
+recognition.onresult = (event) => {
+    // Crucial fix: properly extracts the spoken text matrix from the web browser
+    const transcript = event.results[0][0].transcript;
+    
+    // Updates the screen text element
+    content.innerText = transcript;
+    
+    // -> PASSES DATA TO YOUR FUNCTION: Puts the user's message on the right
+    addMessageToChat('user', transcript);
+    
+    // Let Kevin process his response text
+    let responseText = "I heard you say: " + transcript; 
+    
+    // This speaks the text out loud AND puts Kevin's message on the left
+    speak(responseText); 
+};
+
 function speak(text) {
     window.speechSynthesis.cancel();
     const text_speak = new SpeechSynthesisUtterance(text);
