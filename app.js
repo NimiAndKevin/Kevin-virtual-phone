@@ -214,8 +214,7 @@ function takeCommand(message){
         topic = "latest";
     }
 
-    window.open(
-        `https://news.google.com/search?q=${encodeURIComponent(topic)}`, "_blank");
+    window.open(`https://news.google.com/search?q=${encodeURIComponent(topic)}`, "_blank");
 
     speak(`Searching the latest ${topic} news, sir.`);
 }
