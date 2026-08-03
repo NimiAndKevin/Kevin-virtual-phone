@@ -40,19 +40,15 @@ function speak(text) {
 
     const utterance = new SpeechSynthesisUtterance(text);
 
-    // Use Tom voice
+    // Try to use Tom
     const tomVoice = availableVoices.find(
         voice => voice.name === "Tom"
     );
 
     if (tomVoice) {
         utterance.voice = tomVoice;
-        console.log("Using voice:", tomVoice.name);
-    } else {
-        console.log("Tom voice not found. Using default voice.");
     }
 
-    // Warm, natural male settings
     utterance.rate = 0.90;
     utterance.pitch = 0.90;
     utterance.volume = 1.0;
