@@ -117,28 +117,42 @@ function takeCommand(message){
         speak("Opening Facebook...")
     }
 		
-	else if(message.includes("calculate")) {
-        // Clean the spoken text to convert words into math operators
-        let equation = message.replace("calculate", "")
-                              .replace("plus", "+")
-                              .replace("minus", "-")
-                              .replace("times", "*")
-                              .replace("multiplied by", "*")
-                              .replace("divided by", "/")
-                              .replace("x", "*")
-                              .trim();
-        try {
-            // Safely evaluate the basic mathematical string
-            const result = Function(`"use strict"; return (${equation})`)();
-            if(isNaN(result) || result === Infinity) {
-                speak("I could not compute that calculation cleanly, sir.");
-            } else {
-                speak(`The answer is ${result}`);
-            }
-        } catch (error) {
-            speak("Sorry sir, I could not parse that mathematical equation.");
+	else if (message.includes("calculate")) {
+
+    let equation = message
+        .replace("calculate", "")
+        .replace(/plus/gi, "+")
+        .replace(/minus/gi, "-")
+        .replace(/times/gi, "*")
+        .replace(/multiplied by/gi, "*")
+        .replace(/divided by/gi, "/")
+        .replace(/over/gi, "/")
+        .replace(/into/gi, "*")
+        .replace(/\bx\b/gi, "*")      // only replaces x by itself
+        .replace(/\s+/g, "");
+
+    try {
+
+        // Only allow numbers and operators
+        if(!/^[0-9+\-*/().]+$/.test(equation)){
+            throw new Error("Invalid equation");
         }
+
+        const result = Function('"use strict"; return (' + equation + ')')();
+
+        if(!isFinite(result)){
+            speak("That calculation is not valid, sir.");
+        }
+        else{
+            speak(`The answer is ${result}`);
+        }
+
     }
+    catch(err){
+        speak("Sorry sir, I couldn't calculate that.");
+    }
+
+}
     
     // UPDATED Feature: Huge Joke Container
     else if(message.includes("tell me a joke") || message.includes("say a joke")) {
@@ -205,18 +219,12 @@ function takeCommand(message){
             });
     }
 		
-    // Latest News Updates (e.g., "latest news")
-    else if(message.includes("news")) {
+    else if (message.includes("news") ||message.includes("latest news") ||message.includes("today's news") ||message.includes("todays news")) {
 
-    let topic = message.replace("news", "").trim();
+    window.open(
+        "https://www.google.com/search?q=latest+news+today", "_blank");
 
-    if(topic === "") {
-        topic = "latest";
-    }
-
-    window.open(`https://news.google.com/search?q=${encodeURIComponent(topic)}`, "_blank");
-
-    speak(`Searching the latest ${topic} news, sir.`);
+    speak("Searching for today's latest news, sir.");
 }
 
     // Search 3D items on Sketchfab using "3d search" or "image search"
