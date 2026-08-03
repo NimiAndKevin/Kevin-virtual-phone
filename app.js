@@ -221,8 +221,7 @@ function takeCommand(message){
 		
     else if (message.includes("news") ||message.includes("latest news") ||message.includes("today's news") ||message.includes("todays news")) {
 
-    window.open(
-        "https://www.google.com/search?q=latest+news+today", "_blank");
+    window.open("https://www.google.com/search?q=latest+news+today", "_blank");
 
     speak("Searching for today's latest news, sir.");
 }
@@ -280,7 +279,7 @@ function takeCommand(message){
                 }
             });
         } else {
-            window.open(`https://google.com{encodeURIComponent(message)}`, "_blank");
+            window.open(`https://www.google.com/search?q=${encodeURIComponent(message)}`, "_blank");
             speak("This is what I found regarding your question, sir.");
         }
     }
