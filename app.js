@@ -37,25 +37,28 @@ function addMessageToChat(sender, text) {
 
 function speak(text) {
     window.speechSynthesis.cancel();
-    const text_speak = new SpeechSynthesisUtterance(text);
 
-    const targetVoice = availableVoices.find(voice => 
-        voice.name.includes('Alex') || 
-        voice.name.includes('Samantha') || 
-        voice.name.includes('Google US English')
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    // Use Tom voice
+    const tomVoice = availableVoices.find(
+        voice => voice.name === "Tom"
     );
-    
-    if (targetVoice) {
-        text_speak.voice = targetVoice;
+
+    if (tomVoice) {
+        utterance.voice = tomVoice;
+        console.log("Using voice:", tomVoice.name);
+    } else {
+        console.log("Tom voice not found. Using default voice.");
     }
 
-    text_speak.rate = 0.95;   
-    text_speak.volume = 1.0;  
-    text_speak.pitch = 1.15;  
+    // Warm, natural male settings
+    utterance.rate = 0.90;
+    utterance.pitch = 0.90;
+    utterance.volume = 1.0;
 
-    window.speechSynthesis.speak(text_speak);
+    window.speechSynthesis.speak(utterance);
 
-    // Prints the response text inside the glowing black/blue container
     addMessageToChat('kevin', text);
 }
 
