@@ -224,6 +224,76 @@ function takeCommand(message){
 
     speak("Searching for today's latest news, sir.");
 }
+		
+	else if (message.includes("play")) {
+
+    let song = message
+        .replace("play", "")
+        .replace("on spotify", "")
+        .trim();
+
+    if (song === "") {
+        window.open("https://open.spotify.com/", "_blank");
+        speak("Opening Spotify.");
+    } else {
+        window.open(
+            `https://open.spotify.com/search/${encodeURIComponent(song)}`, "_blank");
+        speak(`Searching Spotify for ${song}.`);
+    }
+}
+		
+	else if(message.includes("near me")){
+
+    let place = message.replace("near me", "").trim();
+
+    window.open(
+        `https://www.google.com/maps/search/${encodeURIComponent(place)}+near+me`, "_blank");
+
+    speak(`Searching for ${place} near you.`);
+}
+		
+	else if(message.startsWith("maps ")){
+
+    let place = message.replace("maps", "").trim();
+
+    window.open(
+        `https://www.google.com/maps/search/${encodeURIComponent(place)}`, "_blank");
+
+    speak(`Searching Google Maps for ${place}.`);
+}
+	else if (message.includes(" from ") && message.includes(" to ")) {
+    const match = message.match(/from (.*?) to (.*)/i);
+
+    if (match) {
+        const origin = match[1].trim();
+        const destination = match[2].trim();
+
+        window.open(
+            `https://www.google.com/maps/dir/${encodeURIComponent(origin)}/${encodeURIComponent(destination)}`, "_blank");
+
+        speak(`Showing directions from ${origin} to ${destination}.`);
+    }
+}
+
+	else if (message.includes("where am i")) {
+
+    navigator.geolocation.getCurrentPosition(async function(position){
+
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        const url =
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`;
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        speak(`You are currently at ${data.display_name}`);
+
+        window.open(`https://www.google.com/maps?q=${lat},${lng}`);
+
+    });
+}
 
     // Search 3D items on Sketchfab using "3d search" or "image search"
     else if(message.includes("3d search") || message.includes("image search")) {
@@ -231,6 +301,31 @@ function takeCommand(message){
         window.open(`https://sketchfab.com/search?q=${encodeURIComponent(search3d)}`, "_blank");
         speak(`Searching Sketchfab for ${search3d}...`);
     }
+
+	else if (message.includes("directions from") ||message.includes("navigate from") ||message.includes("route from")) {
+
+    let text = message
+        .replace("directions from", "")
+        .replace("navigate from", "")
+        .replace("route from", "")
+        .trim();
+
+    if (text.includes(" to ")) {
+
+        let [origin, destination] = text.split(" to ");
+
+        origin = origin.trim();
+        destination = destination.trim();
+
+        window.open(
+            `https://www.google.com/maps/dir/${encodeURIComponent(origin)}/${encodeURIComponent(destination)}`, "_blank");
+
+        speak(`Showing directions from ${origin} to ${destination}.`);
+
+    } else {
+        speak("Please say, directions from one place to another.");
+    }
+}
 
     // Search YouTube using "youtube [query]"
     else if(message.includes("youtube ")) {
