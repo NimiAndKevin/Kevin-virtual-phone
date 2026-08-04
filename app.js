@@ -275,7 +275,7 @@ function takeCommand(message){
     }
 }
 
-	else if (message.includes("where am i")) {
+	else if (message.includes("where am i")){
 
     navigator.geolocation.getCurrentPosition(async function(position){
 
