@@ -225,7 +225,7 @@ function takeCommand(message){
     speak("Searching for today's latest news, sir.");
 }
 		
-	else if (message.includes("play")) {
+	else if (message.includes("play")){
 
     let song = message
         .replace("play", "")
@@ -236,8 +236,7 @@ function takeCommand(message){
         window.open("https://open.spotify.com/", "_blank");
         speak("Opening Spotify.");
     } else {
-        window.open(
-            `https://open.spotify.com/search/${encodeURIComponent(song)}`, "_blank");
+        window.open(`https://open.spotify.com/search/${encodeURIComponent(song)}`, "_blank");
         speak(`Searching Spotify for ${song}.`);
     }
 }
@@ -246,8 +245,7 @@ function takeCommand(message){
 
     let place = message.replace("near me", "").trim();
 
-    window.open(
-        `https://www.google.com/maps/search/${encodeURIComponent(place)}+near+me`, "_blank");
+    window.open(`https://www.google.com/maps/search/${encodeURIComponent(place)}+near+me`, "_blank");
 
     speak(`Searching for ${place} near you.`);
 }
@@ -256,8 +254,7 @@ function takeCommand(message){
 
     let place = message.replace("maps", "").trim();
 
-    window.open(
-        `https://www.google.com/maps/search/${encodeURIComponent(place)}`, "_blank");
+    window.open(`https://www.google.com/maps/search/${encodeURIComponent(place)}`, "_blank");
 
     speak(`Searching Google Maps for ${place}.`);
 }
@@ -268,8 +265,7 @@ function takeCommand(message){
         const origin = match[1].trim();
         const destination = match[2].trim();
 
-        window.open(
-            `https://www.google.com/maps/dir/${encodeURIComponent(origin)}/${encodeURIComponent(destination)}`, "_blank");
+        window.open(`https://www.google.com/maps/dir/${encodeURIComponent(origin)}/${encodeURIComponent(destination)}`, "_blank");
 
         speak(`Showing directions from ${origin} to ${destination}.`);
     }
@@ -282,8 +278,7 @@ function takeCommand(message){
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
 
-        const url =
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`;
+        const url =`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`;
 
         const response = await fetch(url);
         const data = await response.json();
@@ -317,8 +312,7 @@ function takeCommand(message){
         origin = origin.trim();
         destination = destination.trim();
 
-        window.open(
-            `https://www.google.com/maps/dir/${encodeURIComponent(origin)}/${encodeURIComponent(destination)}`, "_blank");
+        window.open(`https://www.google.com/maps/dir/${encodeURIComponent(origin)}/${encodeURIComponent(destination)}`, "_blank");
 
         speak(`Showing directions from ${origin} to ${destination}.`);
 
