@@ -244,7 +244,9 @@ function takeCommand(message){
         speak("Please say a contact name followed by the message.");
         return;
     }
-
+		
+    speak("i'm listening")
+    recognition.start();
     const name = command.substring(0, firstSpace).toLowerCase();
     const text = command.substring(firstSpace + 1);
 
