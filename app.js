@@ -225,22 +225,6 @@ function takeCommand(message){
     speak("Searching for today's latest news, sir.");
 }
 		
-	else if (message.includes("play")){
-
-    let song = message
-        .replace("play", "")
-        .replace("on spotify", "")
-        .trim();
-
-    if (song === "") {
-        window.open("https://open.spotify.com/", "_blank");
-        speak("Opening Spotify.");
-    } else {
-        window.open(`https://open.spotify.com/search/${encodeURIComponent(song)}`, "_blank");
-        speak(`Searching Spotify for ${song}.`);
-    }
-}
-		
 	else if(message.includes("near me")){
 
     let place = message.replace("near me", "").trim();
@@ -318,6 +302,22 @@ function takeCommand(message){
 
     } else {
         speak("Please say, directions from one place to another.");
+    }
+}
+
+	else if (message.includes("play")){
+
+    let song = message
+        .replace("play", "")
+        .replace("on spotify", "")
+        .trim();
+
+    if (song === "") {
+        window.open("https://open.spotify.com/", "_blank");
+        speak("Opening Spotify.");
+    } else {
+        window.open(`https://open.spotify.com/search/${encodeURIComponent(song)}`, "_blank");
+        speak(`Searching Spotify for ${song}.`);
     }
 }
 
