@@ -236,33 +236,45 @@ function takeCommand(message){
 		
 	else if(message.startsWith("message ")){
 
-    const command = message.replace("message","").trim();
+    const command = message.replace("message", "").trim();
 
-    const firstSpace = command.indexOf(" ");
+    // Only the contact name was spoken
+    if(!command.includes(" ")){
 
-    if(firstSpace === -1){
-        speak("Please say a contact name followed by the message.");
+        const name = command.toLowerCase();
+
+        if(contacts[name]){
+
+            window.open(`https://wa.me/${contacts[name]}`, "_blank");
+
+            speak(`Opening WhatsApp chat with ${name}.`);
+
+        }else{
+
+            speak("I don't know that contact.");
+
+        }
+
         return;
     }
-		
-    speak("i'm listening")
-    recognition.start();
+
+    // Contact name + message
+    const firstSpace = command.indexOf(" ");
+
     const name = command.substring(0, firstSpace).toLowerCase();
     const text = command.substring(firstSpace + 1);
 
     if(contacts[name]){
 
-        window.open(
-            `https://wa.me/${contacts[name]}?text=${encodeURIComponent(text)}`, "_blank");
+        window.open(`https://wa.me/${contacts[name]}?text=${encodeURIComponent(text)}`, "_blank");
 
-        speak(`Opening WhatsApp for ${name}.`);
+        speak(`Opening WhatsApp chat with ${name}.`);
 
     }else{
 
         speak("I don't know that contact.");
 
     }
-
 }
 		
 	else if(message.includes("near me")){
