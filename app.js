@@ -233,6 +233,7 @@ function takeCommand(message){
 
     speak("Searching for today's latest news, sir.");
 }
+		
 	else if(message.startsWith("message ")){
 
     const command = message.replace("message","").trim();
