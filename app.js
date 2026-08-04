@@ -112,6 +112,18 @@ function takeCommand(message){
     if(message.includes('hey') || message.includes('hello')){
         speak("Hello Sir, How May I Help You?");
     }
+	else if(message.includes('buddy') || message.includes('pal')){
+        speak("Yes Sir");
+    }
+	else if(message.includes('i need help') || message.includes('i need your help')){
+        speak("sir what do you need help with");
+    }
+	else if(message.includes('thanks buddy') || message.includes('thank you')){
+        speak("sir your welcome");
+    }
+	else if(message.includes("why you came to this world")){
+        speak("Thanks to Nimi. further it is a secret")
+    }
     else if(message.includes("open google")){
         window.open("https://google.com", "_blank");
         speak("Opening Google...")
