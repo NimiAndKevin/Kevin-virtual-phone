@@ -5,6 +5,14 @@ const chatContainer = document.getElementById('chatContainer');
 let chatHistory = [];
 let availableVoices = [];
 
+const contacts = {
+    mom: "17785511669",
+    dad: "12365912494",
+    fimi: "2349096403929",
+    tutor: "2347040160012",
+	nosa: "2347049707929"
+};
+
 function loadVoices() {
     availableVoices = window.speechSynthesis.getVoices();
 }
@@ -98,6 +106,7 @@ btn.addEventListener('click', ()=>{
     speak("i'm listening")
     recognition.start();
 })
+	
 
 function takeCommand(message){
     if(message.includes('hey') || message.includes('hello')){
@@ -223,6 +232,34 @@ function takeCommand(message){
     window.open("https://www.google.com/search?q=latest+news+today", "_blank");
 
     speak("Searching for today's latest news, sir.");
+}
+	else if(message.startsWith("message ")){
+
+    const command = message.replace("message","").trim();
+
+    const firstSpace = command.indexOf(" ");
+
+    if(firstSpace === -1){
+        speak("Please say a contact name followed by the message.");
+        return;
+    }
+
+    const name = command.substring(0, firstSpace).toLowerCase();
+    const text = command.substring(firstSpace + 1);
+
+    if(contacts[name]){
+
+        window.open(
+            `https://wa.me/${contacts[name]}?text=${encodeURIComponent(text)}`, "_blank");
+
+        speak(`Opening WhatsApp for ${name}.`);
+
+    }else{
+
+        speak("I don't know that contact.");
+
+    }
+
 }
 		
 	else if(message.includes("near me")){
