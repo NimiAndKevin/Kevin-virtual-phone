@@ -85,7 +85,7 @@ function wishMe(){
 }
 
 window.addEventListener('load', ()=>{
-    speak("I am Kevin, your virtual artificial intelligence and i am here to assist you with a variety of task with the best i can, 24 hours a day, 7 days a week. How may i help to you today?")
+    speak("I am Kevin, your virtual artificial intelligence and i am here to assist you with a variety of task with the best i can, 24 hours a day, 7 days a week. How may i help you today?")
     wishMe();
 });
 
