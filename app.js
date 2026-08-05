@@ -123,7 +123,8 @@ function takeCommand(message){
     }
 	else if (message.includes("what can you do") ||message.includes("help") ||message.includes("list commands") ||message.includes("show commands")){
     speak("Certainly sir. I can greet you, open Google, YouTube, Facebook and other websites, solve calculations, tell programming jokes, check the weather, find your public IP address, search today's latest news, search nearby places, search Google Maps, provide directions between locations, find your current location, search Sketchfab for 3D models, search Spotify for music, search YouTube for videos, answer questions using Google, search Wikipedia, tell you the current time and date, open the calculator, and have simple conversations with you. Just tell me what you need, sir.");
-}
+    }
+		
 	else if(message.includes("why you came to this world")){
         speak("Thanks to Nimi. further it is a secret")
     }
