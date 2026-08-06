@@ -445,7 +445,7 @@ function takeCommand(message){
             speak("This is what I found regarding your question, sir.");
         }
     }
-	else if (message.includes("google ") || message.includes("search google for ") || message.includes("google search ")) {
+	else if (message.includes("google") || message.includes("search google for") || message.includes("google search")) {
 
 	    let search = message;
 	
