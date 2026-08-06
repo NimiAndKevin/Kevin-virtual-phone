@@ -446,20 +446,25 @@ function takeCommand(message){
         }
     }
 	else if (message.includes("google ") || message.includes("search google for ") || message.includes("google search ")) {
-	    const search = message
-	        .replace("search google for", "")
-	        .replace("google search", "")
-	        .replace("google", "")
-	        .trim();
+
+	    let search = message;
 	
-	    if (search === "") {
-	        speak("What would you like me to search for, sir?");
+	    search = search.replace("search google for", "");
+	    search = search.replace("google search", "");
+	    search = search.replace("google", "");
+	    search = search.trim();
+	
+	    if (!search) {
+	        speak("What would you like me to search for?");
 	    } else {
-	        speak(`Searching Google for ${search}.`);
+	        speak(`Searching Google for ${search}`);
 	
-	        window.open(`https://www.google.com/search?q=${encodeURIComponent(search)}`, "_blank");
+	        window.open(
+	            `https://www.google.com/search?q=${encodeURIComponent(search)}`,
+	            "_blank"
+	        );
 	    }
-}
+	}
 
     else if(message.includes('wikipedia')) {
         const topic = message.replace("wikipedia", "").trim();
