@@ -121,12 +121,18 @@ function takeCommand(message){
 	else if(message.includes('thanks buddy') || message.includes('thank you')){
         speak("sir your welcome");
     }
+	else if(message.includes('who made you') || message.includes('who created you')){
+        speak("Nimi Orimolade, an extra-ordinary person , who has a passion for Robotics, Artificial Intelligence,Machine Learning and Math ,he is very co-operative ,If you are facing any problem regarding Nimi Orimolade, He will be glad to help you");
+    }
 	else if (message.includes("what can you do") ||message.includes("help") ||message.includes("list commands") ||message.includes("show commands")){
         speak("Certainly sir. I can greet you, open Google, YouTube, Facebook and other websites, solve calculations, tell programming jokes, check the weather, find your public IP address, search today's latest news, search nearby places, search Google Maps, provide directions between locations, find your current location, search Sketchfab for 3D models, search Spotify for music, search YouTube for videos, answer questions using Google, search Wikipedia, tell you the current time and date, open the calculator, and have simple conversations with you. Just tell me what you need, sir.");
     }
 		
 	else if(message.includes("why you came to this world")){
         speak("Thanks to Nimi. further it is a secret")
+    }
+	else if(message.includes("are you evil")){
+        speak("Sir if i was evil you would have created me with evil intentions and have taken over humans forever")
     }
     else if(message.includes("open google")){
         window.open("https://google.com", "_blank");
@@ -439,6 +445,23 @@ function takeCommand(message){
             speak("This is what I found regarding your question, sir.");
         }
     }
+	else if (
+    message.startsWith("google ") || message.startsWith("search google for ") || message.startsWith("google search ")) {
+
+    const search = message
+        .replace("search google for", "")
+        .replace("google search", "")
+        .replace("google", "")
+        .trim();
+
+    if (search === "") {
+        speak("What would you like me to search for, sir?");
+    } else {
+        speak(`Searching Google for ${search}.`);
+
+        window.open(`https://www.google.com/search?q=${encodeURIComponent(search)}`, "_blank");
+    }
+}
 
     else if(message.includes('wikipedia')) {
         const topic = message.replace("wikipedia", "").trim();
