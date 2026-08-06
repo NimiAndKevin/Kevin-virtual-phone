@@ -459,17 +459,13 @@ function takeCommand(message){
 	    } else {
 	        speak(`Searching Google for ${search}`);
 	
-	        window.open(
-	            `https://www.google.com/search?q=${encodeURIComponent(search)}`,
-	            "_blank"
-	        );
+	        window.open(`https://www.google.com/search?q=${encodeURIComponent(search)}`, "_blank");
 	    }
 	}
 
     else if(message.includes('wikipedia')) {
         const topic = message.replace("wikipedia", "").trim();
-		window.open(
-    `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(topic)}`, "_blank");
+		window.open(`https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(topic)}`, "_blank");
         const finalText = "This is what i found on wikipedia regarding " + message;
         speak(finalText);
     }
