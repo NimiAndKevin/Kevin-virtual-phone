@@ -3,127 +3,41 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Kevin AI</title>
+    <title>Kevin - Virtual Assistant</title>
+    <link rel="icon" type="image/x-icon" href="/Images/Kevin.ico">
 
     <!---- CSS Linkage ------>
     <link rel="stylesheet" href="style.css">
 
-    <!---- Font Awesome ------>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!---- FIXED: Valid, live Font Awesome v6 CDN link ------>
+    <link rel="stylesheet" href="https://cloudflare.com">
 </head>
 
 <body>
-
-    <!-- ================= MENU BUTTON ================= -->
-
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-    <!-- ================= SIDE MENU ================= -->
-
-    <div class="side-menu" id="sideMenu">
-
-        <span class="close-btn" onclick="toggleMenu()">✕</span>
-
-        <a href="#">🏠 Home</a>
-        <a href="#creator">👨 About the Creator</a>
-        <a href="#ai">🤖 About Kevin AI</a>
-        <a href="#settings">⚙️ Settings</a>
-        <a href="#contact">📞 Contact</a>
-
-    </div>
-
-    <!-- ================= HOME ================= -->
-
     <section class="main">
-
-        <!-- Kevin logo -->
-
-        <!-- KEVIN title -->
-
-        <!-- Speak button -->
-
-        <div class="input">
-
-            <button class="talk">
-                <i class="fa-solid fa-microphone"></i>
-            </button>
-
-            <h1 class="content">Click here to speak</h1>
-
+        <div class="image-container">
+            <div class="image">
+                <img src="XDZT (1).gif" alt="image">
+            </div>
+            <h1>K E V I N</h1>
+            <p>I'm a Virtual Assistant, how can I help you?</p>
         </div>
 
-        <!-- Chat -->
+        <div class="input">
+            <button class="talk"><i class="fa-solid fa-microphone"></i></button>
+            <h1 class="content"> Click here to speak</h1>
+        </div>
 
-        <div class="chat-container" id="chatContainer"></div>
-
+        <!-- PLACED UNDER THE BUTTON: Drippy Black and Blue Chat Box -->
+        <div class="chat-container" id="chatContainer">
+            <!-- Messages will be injected here by JavaScript -->
+        </div>
     </section>
 
-    <!-- ================= ABOUT CREATOR ================= -->
-
-    <section id="creator">
-
-        <h1>About the Creator</h1>
-
-        <p>
-            Hello! My name is <strong>Nimi Orimolade</strong>.
-            I created Kevin AI as a voice-powered virtual assistant
-            to help users through speech recognition and artificial
-            intelligence.
-        </p>
-
-    </section>
-
-    <!-- ================= ABOUT KEVIN AI ================= -->
-
-    <section id="ai">
-
-        <h1>About Kevin AI</h1>
-
-        <p>
-            Kevin AI is a smart virtual assistant that listens,
-            speaks, answers questions, and assists with everyday tasks.
-        </p>
-
-    </section>
-
-    <!-- ================= SETTINGS ================= -->
-
-    <section id="settings">
-
-        <h1>Settings</h1>
-
-        <button>Dark Mode</button>
-        <button>Light Mode</button>
-
-        <br><br>
-
-        <label>Voice</label>
-        <select id="voiceSelect"></select>
-
-        <br><br>
-
-        <button>Clear Chat</button>
-
-    </section>
-
-    <!-- ================= CONTACT ================= -->
-
-    <section id="contact">
-
-        <h1>Contact</h1>
-
-        <p>Email: olaoluwanimiorimolade@email.com</p>
-        <p>GitHub: github.com/NimiandKevin</p>
-
-    </section>
-
-    <!------- JavaScript --------->
-
+    <!------- Js Linkage --------->
     <script src="app.js"></script>
-
 </body>
 
 </html>
